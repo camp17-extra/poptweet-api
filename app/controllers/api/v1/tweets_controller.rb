@@ -17,6 +17,12 @@ module Api
         render json: tweet
       end
 
+      def update
+        tweet = Tweet.find(params[:id])
+        tweet.update(tweet_params)
+        render json: tweet
+      end
+
       private
       def tweet_params
         params.permit(:name, :image, :text)
