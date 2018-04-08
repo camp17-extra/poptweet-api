@@ -11,6 +11,12 @@ module Api
         render json: @Tweet
       end
 
+      def destroy
+        tweet = Tweet.find(params[:id])
+        tweet.destroy
+        render json: tweet
+      end
+
       private
       def tweet_params
         params.permit(:name, :image, :text)
