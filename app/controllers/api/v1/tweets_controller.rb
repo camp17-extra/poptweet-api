@@ -8,7 +8,7 @@ module Api
 
       def create
         @tweet = Tweet.create(tweet_params)
-        render json: @Tweet
+        render json: @tweet
       end
 
       def destroy
