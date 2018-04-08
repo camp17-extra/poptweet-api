@@ -23,6 +23,11 @@ module Api
         render json: tweet
       end
 
+      def show
+        tweet = Tweet.find(params[:id])
+        render json: tweet
+      end
+
       private
       def tweet_params
         params.permit(:name, :image, :text)
