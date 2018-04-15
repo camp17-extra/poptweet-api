@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :tweets
       resource :login, only: [:create], controller: :sessions
+      resource :users, only: [:create]
     end
   end
 end
