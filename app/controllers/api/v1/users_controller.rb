@@ -1,6 +1,10 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authenticate_user_from_token!, only: [:create]
 
+  def show
+    render json: User.find(params[:id]), each_serializer: Api::V1::UserSerializer
+  end
+
   # POST
   # Create an user
   def create
