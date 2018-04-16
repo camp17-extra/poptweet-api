@@ -1,4 +1,6 @@
 class Api::V1::TweetsController < ApplicationController
+  skip_before_action :authenticate_user_from_token!, only: [:index, :show]
+
   def index
     tweets = Tweet.all
     render json: tweets
