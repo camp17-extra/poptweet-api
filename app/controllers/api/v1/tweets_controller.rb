@@ -30,7 +30,7 @@ class Api::V1::TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).permit(:name, :image, :text)
+    params.require(:tweet).permit(:name, :image, :text, :user_id)
   end
 
 end
