@@ -8,7 +8,7 @@ class Api::V1::SessionsController < ApplicationController
 
     if @user.valid_password?(params[:password])
       sign_in :user, @user
-      render json: @user, serializer: ::V1::SessionSerializer, root: nil
+      render json: @user, serializer: Api::V1::SessionSerializer, root: nil
     else
       invalid_password
     end
