@@ -14,6 +14,13 @@ class Api::V1::RepliesController < ApplicationController
     render json: reply
   end
 
+  def destroy
+    tweet = Tweet.find(params[:tweet_id])
+    reply = tweet.replies.find(params[:id])
+    reply.destroy
+    render json: reply
+  end
+
   private
   def reply_params
     params.require(:reply).permit(:text).merge(user_id: current_user.id)
