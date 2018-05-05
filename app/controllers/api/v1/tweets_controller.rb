@@ -14,7 +14,7 @@ class Api::V1::TweetsController < ApplicationController
   def destroy
     tweet = Tweet.find(params[:id])
     tweet.destroy
-    render json: tweet
+    render body: nil, status: :no_content
   end
 
   def update
