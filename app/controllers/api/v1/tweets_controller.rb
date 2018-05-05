@@ -6,6 +6,11 @@ class Api::V1::TweetsController < ApplicationController
     render json: tweets, include: []
   end
 
+  def show
+    tweet = Tweet.find(params[:id])
+    render json: tweet, include: [:replies]
+  end
+
   def create
     tweet = Tweet.create(tweet_params)
     render json: tweet
@@ -21,11 +26,6 @@ class Api::V1::TweetsController < ApplicationController
     tweet = Tweet.find(params[:id])
     tweet.update(tweet_params)
     render json: tweet
-  end
-
-  def show
-    tweet = Tweet.find(params[:id])
-    render json: tweet, include: [:replies]
   end
 
   private
