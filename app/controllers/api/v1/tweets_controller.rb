@@ -25,7 +25,7 @@ class Api::V1::TweetsController < ApplicationController
 
   def show
     tweet = Tweet.find(params[:id])
-    render json: tweet
+    render json: tweet, include: [:replies]
   end
 
   private
