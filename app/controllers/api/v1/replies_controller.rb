@@ -27,7 +27,7 @@ class Api::V1::RepliesController < ApplicationController
     reply = tweet.replies.find(params[:id])
 
     reply.destroy
-    render json: reply
+    render body: nil, status: :no_content
   end
 
   private
