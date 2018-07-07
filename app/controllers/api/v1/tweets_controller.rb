@@ -3,7 +3,12 @@ class Api::V1::TweetsController < ApplicationController
 
   def index
     tweets = Tweet.all
-    render json: tweets
+    render json: tweets, include: []
+  end
+
+  def show
+    tweet = Tweet.find(params[:id])
+    render json: tweet, include: [:replies]
   end
 
   def create
@@ -14,17 +19,12 @@ class Api::V1::TweetsController < ApplicationController
   def destroy
     tweet = Tweet.find(params[:id])
     tweet.destroy
-    render json: tweet
+    render body: nil, status: :no_content
   end
 
   def update
     tweet = Tweet.find(params[:id])
     tweet.update(tweet_params)
-    render json: tweet
-  end
-
-  def show
-    tweet = Tweet.find(params[:id])
     render json: tweet
   end
 
